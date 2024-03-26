@@ -7,6 +7,7 @@ __Created__ = 2022/2/14 10:37 下午
 """
 import json
 import time
+import traceback
 from functools import partial
 
 import requests
@@ -65,8 +66,12 @@ class ZhsCheckIn():
 
 if __name__ == '__main__':
     a = ZhsCheckIn()
-    res = a.check_in()
-    success = filter(lambda x: x is True, res)
-    print(f"====================共{len(list(success))}个ZHS账号签到成功=========\n")
-    print(
-        f"==================脚本执行- 北京时间(UTC+8)：{time.strftime('%Y/%m/%d %H:%M:%S', time.localtime())}=====================\n")
+    try:
+        res = a.check_in()
+        success = filter(lambda x: x is True, res)
+        print(f"====================共{len(list(success))}个ZHS账号签到成功=========\n")
+        print(
+            f"==================脚本执行- 北京时间(UTC+8)：{time.strftime('%Y/%m/%d %H:%M:%S', time.localtime())}=====================\n")
+    except Exception as e:
+        print(f"===================ZHS账号签到异常===================")
+        print(traceback.print_exc())
