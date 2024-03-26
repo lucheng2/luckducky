@@ -56,6 +56,7 @@ class ZhsCheckIn():
         response = requests.post('https://zhs.tw/user/checkin',
                                  headers=self.headers,
                                  cookies=cookie)
+        print("response:", response.text)
         if response.status_code != 200:
             return False
         response_result = json.loads(response.text)
