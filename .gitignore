@@ -1,0 +1,9 @@
+.idea/
+
+Pipfile
+*.pkl
+header_out.txt
+*.log
+venv
+__pycache__
+*.exe
